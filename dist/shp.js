@@ -38,11 +38,7 @@ var cache = new Cache({
 	max: 20
 });
 function shp(base, whiteList) {
-	if (cache.has(base)) {
-		return Promise.resolve(cache.get(base));
-	}
 	return shp.getShapefile(base, whiteList).then(function (resp) {
-		cache.set(base, resp);
 		return resp;
 	});
 }
